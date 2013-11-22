@@ -8,8 +8,7 @@ GREEN=$(tput setaf 2; tput bold)
 YELLOW=$(tput setaf 3)
 RED=$(tput setaf 1)
 NOW=$(date +'%Y-%m-%d')
-LOG_FILE="/tmp/dropbox_install_$NOW" 
-DIR_SCRIPT="/home/amzad/Dropbox/Scripts/Ubuntu"
+LOG_FILE="/tmp/dropbox_install_$NOW"  
 
 red() {
     echo -e -n "$RED$*$NORMAL"
