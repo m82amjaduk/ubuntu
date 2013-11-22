@@ -1,5 +1,6 @@
 #!/bin/bash 
 # Run $ chmod +x dropbox.sh
+# $ ./dropbox.sh
 
 
 NORMAL=$(tput sgr0)
@@ -43,7 +44,7 @@ dropbox_install() {
 		red "# ~/.dropbox-dist/dropboxd " 
 		green " to start Dropbox deamon.\n"
 	else
-		red "Please comment line content exit \n";  exit; 
+		#red "Please comment line content exit \n";  exit; 
 		green "Downloading........... \n"
 		cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
 		green "Installing........... Please wait !!! \n"
