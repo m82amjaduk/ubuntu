@@ -22,10 +22,7 @@ yellow() {
 }
  
  
-#ensure you have all the latest updates in your PPAs
-green "\n\n\nUpdating all PPAs: \n"
-red "$ sudo apt-get update \n\n\n ";
-sudo apt-get update > $LOG_FILE 
+
 
 #############################################################
 
@@ -45,6 +42,11 @@ dropbox_install() {
 		green " to start Dropbox deamon.\n"
 	else
 		#red "Please comment line content exit \n";  exit; 
+		#ensure you have all the latest updates in your PPAs
+		green "\n\n\nUpdating all PPAs: \n"
+		red "$ sudo apt-get update \n\n\n ";
+		sudo apt-get update > $LOG_FILE 
+
 		green "Downloading........... \n"
 		cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
 		green "Installing........... Please wait !!! \n"
