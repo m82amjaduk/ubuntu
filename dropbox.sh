@@ -48,12 +48,13 @@ dropbox_install() {
 
 		green "Downloading........... \n"
 		cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
-		green "Installing........... Please wait !!! \n"
+		green "Installing........... Please wait !!! [5/10 Min]\n"
 		sudo apt-get install nautilus-dropbox >> $LOG_FILE 
-		~/.dropbox-dist/dropboxd
-		green "Installation Succeeded \nRun "
-		red "# ~/.dropbox-dist/dropboxd " 
-		green " to start Dropbox deamon.\n"
+		
+		green "Installation Succeeded \n"
+		green "Please restart after 4 min. \n"
+                red "Running Dropbox service :: $ ~/.dropbox-dist/dropboxd"
+		~/.dropbox-dist/dropboxdun   
 	fi
 }
 
