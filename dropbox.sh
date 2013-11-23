@@ -2,7 +2,9 @@
 # Run $ chmod +x dropbox.sh
 # $ ./dropbox.sh
 
-
+#gsettings set org.gnome.desktop.screensaver idle-activation-enabled false
+#gsettings set org.gnome.settings-daemon.plugins.power active false
+#http://askubuntu.com/questions/67355/how-do-i-completely-turn-off-screensaver-and-power-management
 NORMAL=$(tput sgr0)
 GREEN=$(tput setaf 2; tput bold)
 YELLOW=$(tput setaf 3)
