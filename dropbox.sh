@@ -58,7 +58,7 @@ dropbox_install() {
 		green "Installation Succeeded \n"
 		green "Please restart after 4 min. \n"
                 red "Running Dropbox service :: $ ~/.dropbox-dist/dropboxd"
-		~/.dropbox-dist/dropboxdun   
+		~/.dropbox-dist/dropboxd 
 	fi
 }
 
