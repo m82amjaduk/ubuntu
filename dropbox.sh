@@ -61,7 +61,7 @@ dropbox_install() {
 		green "Please restart after 10 min. \n" 
                 red "Running Dropbox service :: $ ~/.dropbox-dist/dropboxd"
                 mkdir -m 755 ~/Dropbox 
-                touch ~Dropbox/.htaccess
+                touch ~/Dropbox/.htaccess
                 chmod 755 ~Dropbox/.htaccess
 		~/.dropbox-dist/dropboxd 
 	fi
