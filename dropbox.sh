@@ -7,6 +7,8 @@
 #http://askubuntu.com/questions/67355/how-do-i-completely-turn-off-screensaver-and-power-management
 #sudo apt-get install p7zip-full
 #http://askubuntu.com/questions/348173/how-to-install-7zip-through-terminal-to-extract-rar-files
+
+
 NORMAL=$(tput sgr0)
 GREEN=$(tput setaf 2; tput bold)
 YELLOW=$(tput setaf 3)
@@ -56,8 +58,11 @@ dropbox_install() {
 		sudo apt-get install nautilus-dropbox >> $LOG_FILE 
 		
 		green "Installation Succeeded \n"
-		green "Please restart after 4 min. \n"
+		green "Please restart after 10 min. \n" 
                 red "Running Dropbox service :: $ ~/.dropbox-dist/dropboxd"
+                mkdir -m 755 ~/Dropbox 
+                touch ~Dropbox/.htaccess
+                chmod 755 ~Dropbox/.htaccess
 		~/.dropbox-dist/dropboxd 
 	fi
 }
