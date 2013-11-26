@@ -62,7 +62,7 @@ dropbox_install() {
                 red "Running Dropbox service :: $ ~/.dropbox-dist/dropboxd"
                 mkdir -m 755 ~/Dropbox 
                 touch ~/Dropbox/.htaccess
-                chmod 755 ~Dropbox/.htaccess
+                chmod 755 ~/Dropbox/.htaccess
 		~/.dropbox-dist/dropboxd 
 	fi
 }
