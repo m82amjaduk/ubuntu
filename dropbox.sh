@@ -78,3 +78,9 @@ while true; do
 	esac
 done 
 chmod 400 dropbox.sh
+
+
+#*** Mound Image file to USB, Ubuntu OS.
+# sudo dd if=ISO_LOCATION of=USB_LOCATION.
+# sudo dd if=/home/amzad/Downloads/ubuntu-13.10-desktop-i386.iso of=/dev/sdb
+
