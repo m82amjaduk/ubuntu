@@ -1,91 +1,186 @@
 #!/bin/bash
 
+## Lines with '##' can be run from CLI to achive same thing.
+## sudo -s  ## Chnage to ROOT. 
+## whoami  ## to find current user
+## chmod +x createVHost.sh  ## Change permission to executable.    
+## chmod 777 /home/amzad/Dropbox/Scripts/tools/toolsScripts/createVHost.sh
+## chmod 400 /home/amzad/Dropbox/Scripts/tools/toolsScripts/createVHost.sh
+## /home/amzad/Dropbox/Scripts/tools/toolsScripts/createVHost.sh s c dummy.co.uk /home/amzad/dev/dummy amzad
+## /home/amzad/Dropbox/Scripts/tools/toolsScripts/createVHost.sh Q C
 
-## Run :: chmod 777 /home/amzad/Dropbox/Scripts/dnnfashion/setupFresh.sh
-## Run :: chmod 400 /home/amzad/Dropbox/Scripts/dnnfashion/setupFresh.sh
-## Run :: /home/amzad/Dropbox/Scripts/dnnfashion/setupFresh.sh dnnfashion.co.uk dnnfashion 
 
-
-######## Config
-DOMAIN=$1; # dnnfashion.co.uk";
-GITHUB_REPOSITORIES=$2 # "dnnfashion";
-
-GITHUB_REPOSITORIES_OWNER="m82amjaduk";
-CONFIG_USERNAME="Amzad Mojumder";
-CONFIG_EMAIL="amzad.fof@gmail.com";
-
-VHOST_SCRIPT="/home/amzad/Dropbox/Scripts/tools/toolsScripts/createVHost.sh";
-#####################################
-LOCAL_REPOSITORIES="/home/amzad/dev/$GITHUB_REPOSITORIES";
-ORIGIN_URL="git@github.com:$GITHUB_REPOSITORIES_OWNER/$GITHUB_REPOSITORIES.git"; 
-
-# Root Password for Rack Space :: a7fD45c3avq9
-
-# Setup a fresh Project...
-chmod +x $VHOST_SCRIPT;
-echo "Please run the following line on a new CLI tab \n";
-echo "$VHOST_SCRIPT q c $DOMAIN $LOCAL_REPOSITORIES amzad";
-read -sn 1 -p 'Press any key to continue...';echo
-
-### Get Symfony Rep
-cd $LOCAL_REPOSITORIES 
-rm -rf R src
-mkdir -m 777 src 
-curl -sS https://getcomposer.org/installer | php
-php composer.phar create-project symfony/framework-standard-edition src 2.2.9 
-mv composer.phar src/
-cd src
-chmod 777 -R app/cache app/logs
+DIR_SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
+FILE_SCRIPT=$(basename $0);
+NOW=$(date +'%Y-%m-%d-%T');
+NORMAL=$(tput sgr0);
+GREEN=$(tput setaf 1; tput bold; ); 
+msge() { echo -e -n "$GREEN$*$NORMAL"; }
 
 
 
 
-# sudo su;
-# echo "#### Default Value was On, Chnaged to Off. amzad.fof@gmail.com" >> /etc/php5/apache2/php.ini
-# echo "short_open_tag" >> /etc/php5/apache2/php.ini
-# echo "   Default Value: Off" >> /etc/php5/apache2/php.ini
-# echo "   Development Value: Off" >> /etc/php5/apache2/php.ini
-# echo "   Production Value: Off" >> /etc/php5/apache2/php.ini
-
-# echo "####  'date.timezone = '; Changed to 'date.timezone = Europe/Paris'  amzad.fof@gmail.com" >> /etc/php5/apache2/php.ini 
-#  echo "date.timezone = Europe/London" >> /etc/php5/apache2/php.ini  
-## set "short_open_tag = Off" >> /etc/php5/apache2/php.ini 
-# su amzad
+INSTALL_MODE=$1
+CONFIRM=$2;
+HOST=$3;
+DIR=$4; 
+SYS_USER=$5; 
 
 
+if [[ $EUID -ne 0 ]]; then
+ msge "Please Run this Script as ROOT \n\t $ sudo su \n\t $ $DIR_SCRIPT/$FILE_SCRIPT  $INSTALL_MODE $CONFIRM $HOST $DIR $SYS_USER \n"; sudo su; exit;
+fi 
 
-mysqladmin -uroot -pamjad123 create dnnfashion; 
-
-# http://dnnfashion.co.uk/app_dev.php/_configurator/step/0 
-
-cd $LOCAL_REPOSITORIES ## dnnfashion 
-# cd /home/amzad/dev/dnnfashion
-mkdir -m 777 logfile
-touch logfile/error_log logfile/access_log
-chmod 777 -R logfile
-
-
-sudo rm -rf -R .git
-git init
-git remote add origin $ORIGIN_URL;
-# git remote add origin "git@github.com:m82amjaduk/dnnfashion.git"
-git config  user.name "$CONFIG_USERNAME" ;
-# git config  user.name "Amzad Mojumder"
-git config  user.email "$CONFIG_EMAIL";
-# git config user.email "amzad.fof@gmail.com" 
-git config  credential.helper cache ;
-git config  credential.helper "cache --timeout=ll
-36000";
-git config --global color.ui true
-git config push.default current
-
-wget https://raw2.github.com/m82amjaduk/ubuntu/master/.gitignore -P src/
-git add .
-git commit -m "first commit"
-git push -u origin master
+if [ $INSTALL_MODE == 'Q' ]; then 
+      echo -n "Enter Host Name (dummy.co.uk) : ";
+      read HOST;
+      echo -n "Enter Dir (/home/amzad/dev/dummy) : ";
+      read DIR;
+      echo -n "Enter System User (amzad) : ";
+      read SYS_USER;
+fi
 
 
-echo "logfile/" >> .gitignore  
+msge "Host Name :  $HOST  \n" 
+msge "Dir Selected :  $DIR \n" 
+msge "System User :  $SYS_USER \n";
+msge "Current File : $DIR_SCRIPT/$FILE_SCRIPT \n"
 
-firefox http://dnnfashion.co.uk/app_dev.php
+if [ $CONFIRM == 'C' ]; then  
+      msge "\n\nCTRL+C to exit or \n"; 
+      read -sn 1 -p 'Press any key to continue...';echo 
+fi
+
+## Comment the following line to run.
+#exit 1
+
+runAsDiffUser(){
+   sudo -u $SYS_USER -H sh -c "$1";
+}
+
+
+DIR_WEB="$DIR/src/web";
+DIR_HOSTFILE="/etc/apache2/sites-available";
+DIR_SITE_ENABLE="/etc/apache2/sites-enabled";
+
+#*** ADD a LINE TO /etc/hosts file....
+## sudo vim /etc/hosts
+## 127.0.0.1	dummy.co.uk
+PATTERN="127.0.0.1   $HOST"
+HOSTS="/etc/hosts"
+
+#if grep -q $PATTERN $FILE;
+
+if grep -Fxq "$PATTERN" $HOSTS;
+ then  
+	msge "$PATTERN already exist in $HOSTS \n" ;
+ else 
+	echo "$PATTERN"  >> $HOSTS;
+	msge "$PATTERN added to $HOSTS"; 
+fi
+
+#*** Backup $DIR if exist.
+if [ -d $DIR ]
+ then
+	mv $DIR $DIR"_Backup_"$NOW;
+	msge "$DIR exist, renamed to $DIR/old_$NOW";  
+fi 
+
+runAsDiffUser "mkdir -m 755 -p $DIR"	
+runAsDiffUser "mkdir -m 755 -p $DIR_WEB"
+
+## Allowing permission to access the site... 
+## Need to add dir accessable by apache group.
+#sudo chown $SYS_USER:$SYS_USER -R  $DIR	
+#chmod 755 -R $DIR
+
+
+mkdir -m 777 $DIR/logfile 
+#*** Creating error_log file and giving it 777 permission. 
+runAsDiffUser "'$NOW	Log File Created.' >> $DIR/logfile/error_log "
+chmod 777  $DIR/logfile/error_log
+
+#*** Creating access_log file and giving it 777 permission. 
+runAsDiffUser "'$NOW	Log File Created.' >> $DIR/logfile/access_log "
+chmod 777  $DIR/logfile/access_log
+ 
+
+# Create host file. Backup if exist... 
+if [ -f $HOST.conf ]
+	then
+	sudo mv $DIR_HOSTFILE/$HOST.conf  $DIR_HOSTFILE/$HOST.conf__
+fi
+
+VHOST_DATA="<VirtualHost *:80>
+     ServerName  $HOST
+     DocumentRoot '$DIR_WEB'
+     ErrorLog '$DIR/logfile/error_log'
+     CustomLog '$DIR/logfile/access_log' common
+     
+    <Directory '$DIR_WEB'>
+           Options FollowSymLinks MultiViews
+           AllowOverride all
+           AuthType None 
+           Order deny,allow
+           Allow from all
+    </Directory>
+</VirtualHost> 
+# $NOW";
+
+
+# creating /etc/apache2/sites-available/dummy.co.uk.conf
+#EOF :: Should not have any SPACE before order after should be only ENTER.
+cat > $DIR_HOSTFILE/$HOST.conf << EOF
+$VHOST_DATA
+EOF
+
+msge "\n\n $VHOST_DATA >> $DIR_HOSTFILE/$HOST.conf  \n" 
+
+## Enableing site via creating simlink in the following folder. 
+##sudo a2ensite dummy.co.uk.conf
+if [ -f $DIR_SITE_ENABLE/$HOST.conf ]
+	then
+	sudo rm $DIR_SITE_ENABLE/$HOST.conf  
+fi
+
+# Enable Site
+sudo a2ensite $HOST.conf
+
+## restart apache
+sudo service apache2 restart
+
+
+
+runAsDiffUser "touch $DIR_WEB/index.html"
+echo " <h1> Welcome to $HOST </h1> Please EDIT this file @ $DIR_WEB " >> $DIR_WEB/index.html 
+
+msge "Run Follwowing to remove this host\n
+$ vim /etc/hosts # remove '$PATTERN'
+$ rm -rf -R $DIR
+$ rm $DIR_SITE_ENABLE/$HOST.conf
+$ rm $DIR_HOSTFILE/$HOST.conf ";
+
+
+
+## Red For Log File if there is any issue... !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+ 
+cd $DIR_SCRIPT
+chmod 400 createVHost.sh
+firefox "$HOST";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
