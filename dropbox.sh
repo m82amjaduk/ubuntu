@@ -81,6 +81,7 @@ chmod 400 dropbox.sh
 
 
 #*** Mound Image file to USB, Ubuntu OS.
+# df -h # to find USB Location
 # sudo dd if=ISO_LOCATION of=USB_LOCATION.
 # sudo dd if=/home/amzad/Downloads/ubuntu-13.10-desktop-i386.iso of=/dev/sdb
 
