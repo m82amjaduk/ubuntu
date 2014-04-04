@@ -13,6 +13,7 @@ chmod +x setup
 # Open add printer dialog box from ubuntu start panel
 # Choose "Enter URL"  >> http://192.168.0.100:9100 
 # Follow on screen instruction, Use PDF guide if required.
+# Change "device URL"  http://192.168.0.100:9100 to socket://192.168.0.100:9100
 
 
 
