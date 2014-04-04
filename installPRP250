@@ -1,1 +1,19 @@
 # Received email from Richard on 31May2014
+
+
+cd ~/Downloads
+mkdir temp
+cp prp085iiidrv\ for\ linux.rar temp
+cd temp 
+sudo apt-get install unrar 
+unrar x prp085iiidrv\ for\ linux.rar
+su root
+chmod +x setup
+
+
+
+# To find Devices on network
+unrar x prp085iiidrv\ for\ linux.rar
+sudo nmap -sP 192.168.1.0/24
+
+
