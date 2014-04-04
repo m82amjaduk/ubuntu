@@ -10,10 +10,15 @@ unrar x prp085iiidrv\ for\ linux.rar
 su root
 chmod +x setup
 
+# Open add printer dialog box from ubuntu start panel
+# Choose "Enter URL"  >> http://192.168.0.100:9100 
+# Follow on screen instruction, Use PDF guide if required.
+
+
 
 
 # To find Devices on network
-unrar x prp085iiidrv\ for\ linux.rar
+sudo apt-get install nmap
 sudo nmap -sP 192.168.1.0/24
 
 
