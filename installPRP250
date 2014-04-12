@@ -1,5 +1,8 @@
 # Received email from Richard on 31May2014
 
+DIR_SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+FILE_SCRIPT=$(basename $0);
+
 
 cd ~/Downloads
 mkdir temp
@@ -27,3 +30,7 @@ sudo nmap -sP 192.168.1.0/24
 wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]|.]//g'
 curl ifconfig.me
 
+
+cd $DIR_SCRIPT;
+echo "FILE :: $DIR_SCRIPT/$FILE_SCRIPT";
+chmod 400 $DIR_SCRIPT/$FILE_SCRIPT;
