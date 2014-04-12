@@ -1,4 +1,7 @@
 #!/bin/bash
+# Run $ chmod +x webminInstall.sh
+# $ ./webminInstall.sh
+
 DIR_SCRIPT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 FILE_SCRIPT=$(basename $0);
 
