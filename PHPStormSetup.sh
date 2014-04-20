@@ -9,6 +9,7 @@ exit;
 ## Download a better version from here ...
 # http://confluence.jetbrains.com/display/PhpStorm/PhpStorm+Early+Access+Program
 
+cd ~/temp
 wget http://download.jetbrains.com/webide/PhpStorm-EAP-136.1672.tar.gz
 
 
