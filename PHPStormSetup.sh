@@ -28,3 +28,4 @@ cp Symfony2Colors/Symfony2.icls Symfony2.icls
 # What is phpstorm caret??
 
 Enjoy!
+
