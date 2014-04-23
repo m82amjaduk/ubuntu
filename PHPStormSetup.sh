@@ -28,5 +28,14 @@ cp Symfony2Colors/Symfony2.icls Symfony2.icls
 # Reformat Code   # Conflict with Ubuntu, WAS: ctrl+alt+L, NEW: ctrl+alt+Q
 # What is phpstorm caret??
 
+###############################################
+##  Settings >> Plugin >> Browse Repositories >> 
+# Spell Checker English Dictionary
+# Symfony 2 Clickable view 
+# Symfony 2 Plugin
+# php Annotations
+# Eclipse Code Formatter
+
+
 Enjoy!
 
