@@ -34,3 +34,5 @@ curl ifconfig.me
 cd $DIR_SCRIPT;
 echo "FILE :: $DIR_SCRIPT/$FILE_SCRIPT";
 chmod 400 $DIR_SCRIPT/$FILE_SCRIPT;
+
+
