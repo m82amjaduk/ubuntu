@@ -27,6 +27,8 @@ cp Symfony2Colors/Symfony2.icls Symfony2.icls
 ## Settings >>  Keymap
 # Reformat Code   # Conflict with Ubuntu, WAS: ctrl+alt+L, NEW: ctrl+alt+Q
 # Ctrl + Alt+Shift+F = Enter Full Screen Mode
+# Ctrl + F10 = Open Terminal
+# Alt + 1 = Open Project
 # What is phpstorm caret??
 
 ###############################################
