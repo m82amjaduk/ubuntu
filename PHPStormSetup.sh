@@ -29,6 +29,8 @@ cp Symfony2Colors/Symfony2.icls Symfony2.icls
 # Ctrl + Alt+Shift+F = Enter Full Screen Mode
 # Ctrl + F10 = Open Terminal
 # Alt + 1 = Open Project
+# Ctrl+Shift+Alt+R = Use Soft Wraps
+# Ctrl+Shift+Alt+l = Show Line Numbers
 # What is phpstorm caret??
 
 ###############################################
