@@ -41,6 +41,7 @@ cp Symfony2Colors/Symfony2.icls Symfony2.icls
 # Symfony 2 Plugin
 # php Annotations
 # Eclipse Code Formatter
+# color Tree
 
 
 Enjoy!
