@@ -2,7 +2,8 @@
  
  
 # Sample Run ::  ~/Dropbox/Scripts/tools/toolsScripts/ssh.sh amzad@192.168.1.46
- 
+
+# sudo apt-get install  openssh-server #  install openssh-server on remore server  
  
 # This Script will help setup SSH connection to a remote host without reentering password. 
  
