@@ -1,7 +1,7 @@
 #!/bin/bash
  
  
-# Sample Run ::  ~/Dropbox/Scripts/tools/toolsScripts/ssh.sh amzad@192.168.1.46
+# Sample Run ::  ~/Dropbox/Scripts/tools/toolsScripts/ssh.sh "amzad@192.168.1.46 -p22"
 
 # sudo apt-get install  openssh-server #  install openssh-server on remore server  
  
