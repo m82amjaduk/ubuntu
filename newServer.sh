@@ -4,6 +4,9 @@ LOGDIR="/root/log/";
 LOGFILE=$LOGDIR"install.log"
 mkdir -p $LOGDIR
 
+mkdir -p /root/tmp/
+cd /root/tmp/
+
 function log() {
     echo "\n Install " $1 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< " &>> $LOGFILE
 }
