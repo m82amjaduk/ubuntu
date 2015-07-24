@@ -41,5 +41,7 @@ echo "  ################################ " &>>  /etc/issue.net
 cat  /etc/issue.net  &>> $LOGFILE;
 
 /bin/systemctl restart  sshd.service  &>> $LOGFILE;
+echo "END OF File... "  &>> $LOGFILE;
 # Access as both amzad and root !!
 #Banner none
+echo $LOGFILE;
