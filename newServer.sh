@@ -12,7 +12,7 @@ function log() {
 }
 
 function yumIns() {
-    log $i;
+    log $1;
     yum install $1 -y &>> $LOGFILE;
     echo   $1 "\n ======================================= END " &>> $LOGFILE;
 }
