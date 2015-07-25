@@ -35,10 +35,11 @@ sed -i "s/#PubkeyAuthentication .*/PubkeyAuthentication yes/" /etc/ssh/sshd_conf
 sed -i "s/#Banner .*/Banner /etc/issue.net /" /etc/ssh/sshd_config  # Need to do this manually
 
 rm  /etc/issue.net
-echo "  ################################ " &>>  /etc/issue.net
-echo "  ConosurTek Ltd Server "  `hostname` &>>  /etc/issue.net
+echo "################################ " &>>  /etc/issue.net
+echo "ConosurTek Ltd Server "  &>>  /etc/issue.net
+hostname   &>>  /etc/issue.net
 ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//' &>> /root/ipadd.info  &>>  /etc/issue.net
-echo "  ################################ " &>>  /etc/issue.net
+echo "################################ " &>>  /etc/issue.net
 cat  /etc/issue.net  &>> $LOGFILE;
 
 /bin/systemctl restart  sshd.service  &>> $LOGFILE;
