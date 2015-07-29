@@ -15,9 +15,15 @@ function yumIns() {
     echo   $1 "\n ======================================= END " &>> $LOGFILE;
 }
 
+yum update;
+yum upgrade;
+yum updatedb;
+
 yumIns git;
 yumIns curl;
 yumIns vim;
+yumIns zip;
+yumIns unzip;
 
 yumIns zsh;
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
@@ -40,7 +46,12 @@ systemctl start mysqld  &>> $LOGFILE;
 systemctl restart mysqld &>> $LOGFILE;
 systemctl status mysqld &>> $LOGFILE;
 
-yumIns bind bind-utils
+
+# yum -y install php5 sqlite php5-gd php5-sqlite libapache2-mod-php5 libapache2-mod-auth-mysql php5-intl php5-curl php5-dev php5-xdebug php-apc php-pear libmysqlclient15-dev  php5-mysql  &>> $LOGFILE;
+
 
 cd /root
 
+
+
+chmod 444 $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/$(basename $0);
