@@ -1,0 +1,26 @@
+$TTL 600                                                                                                                                                                
+@      86400    IN      SOA     ns1.spicelover.co.uk. m82amjad.yahoo.co.uk. (                                                                                           
+                2014080702      ; serial, todays date+todays                                                                                                            
+                86400           ; refresh, seconds                                                                                                                      
+                7200            ; retry, seconds
+                3600000         ; expire, seconds
+                86400 )         ; minimum, seconds
+
+spicelover.co.uk. 86400 IN NS ns1.spicelover.co.uk.
+spicelover.co.uk. 86400 IN NS ns2.spicelover.co.uk.
+
+ns2.spicelover.co.uk. IN A  139.162.200.175
+ns1.spicelover.co.uk. IN A  139.162.200.175
+www IN A  139.162.200.175
+
+spicelover.co.uk. IN A  139.162.200.175
+localhost.spicelover.co.uk. IN A 127.0.0.1
+
+spicelover.co.uk. IN MX 0 spicelover.co.uk.
+
+mail.spicelover.co.uk. IN CNAME spicelover.co.uk.                                                                                                                       
+;www.spicelover.co.uk. IN CNAME spicelover.co.uk.                                                                                                                       
+ftp.spicelover.co.uk. IN CNAME spicelover.co.uk.  
+
+;www records                                                                                                                                                            
+;www.spicelover.co.uk.        IN      A      139.162.200.175   
