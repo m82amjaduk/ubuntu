@@ -22,5 +22,15 @@ mail.spicelover.co.uk. IN CNAME spicelover.co.uk.
 ;www.spicelover.co.uk. IN CNAME spicelover.co.uk.                                                                                                                       
 ftp.spicelover.co.uk. IN CNAME spicelover.co.uk.  
 
-;www records                                                                                                                                                            
-;www.spicelover.co.uk.        IN      A      139.162.200.175   
+; Debug options ...
+; http://intodns.com/spicelover.co.uk
+; named-checkzone spicelover.co.uk /var/named/zones/spicelover.co.uk.zone
+; host -vt a spicelover.co.uk localhost                            
+; host -vt mx spicelover.co.uk localhost                    
+; host -vt a www.spicelover.co.uk localhost 
+; host -vt a www.spicelover.co.uk 8.8.8.8
+; netstat -nl --ip
+; nslookup -debug spicelover.co.uk
+
+
+
