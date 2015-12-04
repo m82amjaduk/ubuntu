@@ -24,9 +24,25 @@ cp Symfony2Colors/Symfony2.icls Symfony2.icls
 
 
 ###############################################
-## Keymap
+## Settings >>  Keymap
 # Reformat Code   # Conflict with Ubuntu, WAS: ctrl+alt+L, NEW: ctrl+alt+Q
+# Ctrl + Alt+Shift+F = Enter Full Screen Mode
+# Ctrl + F10 = Open Terminal
+# Alt + 1 = Open Project
+# Ctrl+Shift+Alt+R = Use Soft Wraps
+# Ctrl+Shift+Alt+l = Show Line Numbers
+# Ctrl+Shift+Alt+O = Toolbar.
 # What is phpstorm caret??
+
+###############################################
+##  Settings >> Plugin >> Browse Repositories >> 
+# Spell Checker English Dictionary
+# Symfony 2 Clickable view 
+# Symfony 2 Plugin
+# php Annotations
+# Eclipse Code Formatter
+# color Tree
+
 
 Enjoy!
 

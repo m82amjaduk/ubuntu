@@ -8,4 +8,7 @@ git config  user.email "amzad.FOF@gmail.com";
 git config  credential.helper cache ;
 git config  credential.helper "cache --timeout=36000" ;
 
+cat .git/config
+type .git/config
+
 git pull origin master	;
